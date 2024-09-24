@@ -13,18 +13,33 @@ body {
     align-items: center;
     flex-direction: column;
 
-    height: 600px;
-    width: 600px;
+    height: 400px;
+    width: 400px;
 
-    background-color: #fff;
+    background-color: rgb(255, 255, 255);
     border-radius: 8px;
     box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden; /* Garantir que o botão não saia da div */
+    text-overflow: ellipsis; /* Adiciona reticências se o texto for muito longo */
+    
 }
 
 .card > .question p {
-    font-size: 32px;
+    font-size: 20px;
     font-family: sans-serif;
-    font-weight: 600;
+    font-weight: 300;
+    text-align: center;
+}
+
+.card > .question img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-left: 30px;
+    height: 200px;
+    width: 250px
 }
 
 .buttons {
@@ -64,4 +79,22 @@ body {
     font-weight: bold;
     color: #FF6EB4;
     text-shadow: 1px 1px #000;
+}
+
+.video-container {
+    display: none;
+    width: 100%; 
+    height: 100%; 
+    justify-content: center;
+    align-items: center;
+    position: absolute; /* Garante que o vídeo ocupe toda a div .card */
+    top: 0;
+    left: 0;
+}
+
+video {
+    width: 250px; /* Define um tamanho fixo para o vídeo, tornando-o quadrado */
+    height: 250px; /* Mesma altura e largura para garantir a proporção quadrada */
+    object-fit: cover; /* Ajusta o vídeo dentro do quadrado sem distorção */
+    border-radius: 8px; /* Mantém o arredondamento das bordas */
 }

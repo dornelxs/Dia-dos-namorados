@@ -10,7 +10,8 @@
   <body>
     <div class="card" id="card">
       <div class="question" id="question">
-        <p>Quer namorar comigo?</p>
+        <img  src="https://gifman.net/wp-content/uploads/2019/06/ursinhos-fofos-coracoes.gif" alt="abraço">
+        <p>Eu sei que já namoramos mas... <br>quer passar o resto da vida comigo?</p>
         <div class="buttons">
           <button id="yes" class="btn-yes">Sim!</button>
           <button id="no" class="btn-no">Não</button>
@@ -21,6 +22,71 @@
         <p>Eu sabia! Te amo</p>
       </div>
     </div>
-    <script src="script.js"></script>
+    <script>
+      let card = document.getElementById("card");
+
+// Exibir a mensagem e o vídeo caso seja selecionado o 'sim'
+document.querySelector("#yes").addEventListener("click", function () {
+  let question = document.getElementById("question");
+  let answer = document.getElementById("answer");
+
+  // Esconder a pergunta e a resposta
+  question.style.display = "none"; // Esconder a pergunta
+  answer.style.display = "none"; // Ocultar a mensagem para mostrar o vídeo
+
+  // Alterar a imagem de fundo do body
+  document.body.style.backgroundImage = "url('/Imagem do WhatsApp de 2024-09-23 à(s) 20.40.12_6f77327f.jpg')"; // URL da nova imagem
+  document.body.style.backgroundSize = "cover"; // Garante que a imagem cubra toda a tela
+  document.body.style.backgroundPosition = "center"; // Centraliza a imagem
+
+  // Deixa o card transparente
+  card.style.backgroundColor = "rgba(255, 255, 255, 0)"; // Transparência do card
+  card.style.transition = "background-color 0.1s ease"; // Suaviza a transição
+
+  // Adiciona o vídeo
+  let videoContainer = document.createElement('div');
+  videoContainer.classList.add('video-container');
+
+  let video = document.createElement('video');
+  video.src = '/Vídeo do WhatsApp de 2024-09-23 à(s) 20.27.37_57aa0ceb.mp4'; // URL do vídeo
+  video.autoplay = true; // Reproduz o vídeo automaticamente
+  video.muted = true; // Garante que o vídeo esteja mudo
+  video.playsinline = true; // Garante que o vídeo funcione inline em dispositivos iOS
+  video.loop = true; // Reproduz o vídeo em loop
+
+  // Estilizando o vídeo
+  video.style.width = '250px'; // Largura do vídeo
+  video.style.height = '250px'; // Altura do vídeo
+  video.style.objectFit = 'cover'; // Ajusta o vídeo dentro do container
+
+  videoContainer.appendChild(video); // Adiciona o vídeo ao container
+  card.appendChild(videoContainer); // Adiciona o container do vídeo ao card
+  
+  // Exibir o container do vídeo
+  videoContainer.style.display = 'flex';
+  videoContainer.style.justifyContent = 'center'; // Centraliza o vídeo
+  videoContainer.style.alignItems = 'center'; // Alinha verticalmente o vídeo
+});
+
+// Movimento aleatório do botão 'não' dentro da div card
+document.querySelector("#no").addEventListener("mouseover", function () {
+  let cardRect = card.getBoundingClientRect();
+  let buttonRect = this.getBoundingClientRect();
+
+  // Limites dentro da div card
+  let maxX = cardRect.width - buttonRect.width;
+  let maxY = cardRect.height - buttonRect.height;
+
+  // Posição aleatória dentro dos limites da div card
+  let randomX = Math.random() * maxX;
+  let randomY = Math.random() * maxY;
+
+  this.style.position = "absolute"; // Permite mover o botão
+  this.style.left = randomX + "px"; // Define a posição aleatória
+  this.style.top = randomY + "px"; // Define a posição aleatória
+});
+
+
+    </script>
   </body>
 </html>
